@@ -121,7 +121,7 @@ Obs.: A lista abaixo é para consulta. **Não** significa que todos os **status 
 
 Quando um usuário faz cadastro em um sistema ou quando ele decide atualizar sua senha, é realizada uma criptografia, que é a conversão de texto simples legível por humanos em texto incompreensível. Essa prática protege as senhas dos usuários contra acesso não autorizado por parte de invasores. Mesmo que o banco de dados (local onde a senha criptografada fica armazenada) seja comprometido, as senhas não podem ser facilmente decifradas
 
-- Crie uma pasta chamada "auxiliares"
+- Crie uma pasta chamada "auxiliares" dentro da pasta "src"
 - Dentro dela, crie um arquivo chamado "criptografia.ts"
 - Dentro dele, crie uma função chamada "criptografarSenha", que será responsável por recebe a senha (do tipo string) do usuário e retorná-la criptografada
 
@@ -627,4 +627,4 @@ Repare que ao reiniciar sua aplicação os dados cadastrados em tempo de execuç
 
 ---
 
-**COLOQUE SEU NOME AQUI: BENTO JOSÉ DE SANTANA NETO**
+**COLOQUE SEU NOME AQUI:**

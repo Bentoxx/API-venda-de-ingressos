@@ -1,19 +1,32 @@
 import { Router } from "express";
-import { inicial, listarEventos } from "./controller/controllerEventos";
-import { checarFiltro } from "./Middlewares/middlewareVendas";
-import { cadastrarUsuario, logarUsuario } from "./controller/controllerUsuario";
-import { checarUsuario, checarlogin } from "./Middlewares/middlewareUsuario";
-import { validarComprovante } from "./Middlewares/middlewareComprovante";
-
+import { listarEventos } from "./controladores/eventosControlador";
+import { validarFiltro } from "./intermediarios/eventosIntermediario";
+import {
+  cadastrarUsuario,
+  logarUsuario,
+} from "./controladores/usuariosControlador";
+import validarComprovante from "./intermediarios/validarComprovante";
+import {
+  cadastrarCompra,
+  deletarCompra,
+  listarCompras,
+} from "./controladores/comprasControlador";
+import mensagemInicial from "./controladores/rotaPrincipalControlador";
 
 const rotas = Router();
 
-rotas.get('/', inicial)
-rotas.get('/eventos', checarFiltro, listarEventos)
-rotas.post('/usuarios', checarUsuario, cadastrarUsuario)
-rotas.post('/login', checarlogin, logarUsuario)
-rotas.use(validarComprovante)
-rotas.post('/compras')
-rotas.get('/compras')
+rotas.get("/", mensagemInicial);
+
+rotas.get("/eventos", validarFiltro, listarEventos);
+
+rotas.post("/usuarios", cadastrarUsuario);
+rotas.post("/login", logarUsuario);
+
+rotas.use(validarComprovante);
+
+rotas.post("/compras", cadastrarCompra);
+
+rotas.get("/compras", listarCompras);
+rotas.delete("/compras/:id", deletarCompra);
 
 export default rotas;
